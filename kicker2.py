@@ -1,33 +1,41 @@
-# -*- coding: utf-8 -*-
-import LINEPY
-from LINEPY import *
-from akad.ttypes import *
-from multiprocessing import Pool, Process
+from LineAPI.linepy import *
+from LineAPI.akad.ttypes import Message
+from LineAPI.akad.ttypes import ContentType as Type
+from LineAPI.akad.ttypes import ChatRoomAnnouncementContents
+from LineAPI.akad.ttypes import ChatRoomAnnouncement
+from datetime import datetime, timedelta
 from time import sleep
-import pytz, datetime, pafy, time, timeit, random, sys, ast, re, os, json, subprocess, threading, string, codecs, requests, tweepy, ctypes, urllib, wikipedia
-from datetime import timedelta, date
-from datetime import datetime
 from bs4 import BeautifulSoup
-from urllib.parse import urlencode
-import subprocess as cmd
+from humanfriendly import format_timespan, format_size, format_number, format_length
+import time, random, multiprocessing, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, pytz, urllib, urllib3, urllib.parse, ffmpy, html5lib, wikipedia, atexit, timeit, pafy, youtube_dl, traceback
+from gtts import gTTS
+from googletrans import Translator
 
-#===============================================================================================
-
-cl = LineClient(authToken="")
+cl = LINE("")
 cl.log("Auth Token : " + str(cl.authToken))
-ki = LineClient(authToken="")
-ki.log("Auth Token : " + str(ki.authToken))
-kk = LineClient(authToken="")
-kk.log("Auth Token : " + str(kk.authToken))
-kc = LineClient(authToken="")
-kc.log("Auth Token : " + str(kc.authToken))
-kb = LineClient(authToken="")
-kb.log("Auth Token : " + str(kb.authToken))
-sw = LineClient(authToken="")
-sw.log("Auth Token : " + str(sw.authToken))
+cl.log("Timeline Token : " + str(cl.tl.channelAccessToken))
 
-#===============================================================================================
-poll = LinePoll(cl)
+ki = LINE("")
+ki.log("Auth Token : " + str(ki.authToken))
+ki.log("Timeline Token : " + str(ki.tl.channelAccessToken))
+
+kk = LINE("")
+kk.log("Auth Token : " + str(kk.authToken))
+kk.log("Timeline Token : " + str(kk.tl.channelAccessToken))
+
+kc = LINE("")
+kc.log("Auth Token : " + str(kc.authToken))
+kc.log("Timeline Token : " + str(kc.tl.channelAccessToken))
+
+kb = LINE("")
+kb.log("Auth Token : " + str(kb.authToken))
+kb.log("Timeline Token : " + str(kb.tl.channelAccessToken))
+
+sw = LINE("")
+sw.log("Auth Token : " + str(sw.authToken))
+sw.log("Timeline Token : " + str(sw.tl.channelAccessToken))
+
+oepoll = OEPoll(cl)
 call = cl
 creator = ["ub1c5a71f27b863896e9d44bea857d35b","ufdc20b3a00b5e8f31e4f91017eb361b0"]
 owner = ["ub1c5a71f27b863896e9d44bea857d35b","ufdc20b3a00b5e8f31e4f91017eb361b0"]
